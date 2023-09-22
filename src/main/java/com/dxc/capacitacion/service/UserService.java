@@ -4,7 +4,12 @@ import java.util.List;
 
 import com.dxc.capacitacion.dto.UserDto;
 
-public class UserService {
+public interface UserService {
     List<UserDto> findAll();
+
     UserDto save(UserDto userDto);
+
+    UserDto update(UserDto userDto);
+
+    void delete(Integer id);
 }
