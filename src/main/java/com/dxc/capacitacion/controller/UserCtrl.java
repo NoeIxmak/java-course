@@ -11,11 +11,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dxc.capacitacion.dto.UserDto;
 import com.dxc.capacitacion.service.UserService;
 
+import lombok.extern.log4j.Log4j2;
+
+@Log4j2
 @RestController
 @RequestMapping("/users")
 public class UserCtrl {
@@ -24,8 +28,15 @@ public class UserCtrl {
     private UserService userService;
 
     @GetMapping
-    public ResponseEntity<UserDto> getUser() {
-        return new ResponseEntity<>(new UserDto(1l, "mario", "moreno", "blanco"), HttpStatus.OK);
+    public ResponseEntity<UserDto> getIdUser(@RequestParam Integer id) {
+        LOGGER.info("buscando usuario con id: {}", id);
+        return new ResponseEntity<>(this.userService.findById(id), HttpStatus.OK);
+    }
+
+    @GetMapping("name")
+    public ResponseEntity<UserDto> getIdUser(@RequestParam String nombre) {
+        LOGGER.info("buscando usuario con id: {}", nombre);
+        return new ResponseEntity<>(this.userService.findByName(nombre), HttpStatus.OK);
     }
 
     @GetMapping("list")

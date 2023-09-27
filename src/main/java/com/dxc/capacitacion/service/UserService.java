@@ -7,6 +7,10 @@ import com.dxc.capacitacion.dto.UserDto;
 public interface UserService {
     List<UserDto> findAll();
 
+    UserDto findById(Integer id);
+
+    UserDto findByName(String nombre);
+
     UserDto save(UserDto userDto);
 
     UserDto update(UserDto userDto);
