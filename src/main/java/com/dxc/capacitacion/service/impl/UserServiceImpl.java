@@ -50,7 +50,7 @@ public class UserServiceImpl implements UserService {
 
     public UserDto findByName(String nombre) {
         UserDto userDto = null;
-        User user = userRepository.findByName(nombre);
+        User user = userRepository.findByName2(nombre);
         if (user != null) {
             LOGGER.info(user);
             userDto = new UserDto(user.getId(), user.getNombre(), user.getPrimerApellido(),
