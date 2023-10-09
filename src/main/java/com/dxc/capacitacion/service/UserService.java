@@ -16,4 +16,6 @@ public interface UserService {
     UserDto update(UserDto userDto);
 
     void delete(Integer id);
+
+    List<UserDto> findByExample(String nombre, String primerApellido, String segundoApellido);
 }

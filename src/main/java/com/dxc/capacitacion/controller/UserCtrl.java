@@ -45,8 +45,17 @@ public class UserCtrl {
         return new ResponseEntity<>(listUser, HttpStatus.OK);
     }
 
+    @GetMapping("listByExample")
+    public ResponseEntity<List<UserDto>> getListUser(@RequestParam(required = false) String nombre,
+            @RequestParam(required = false) String primerApellido,
+            @RequestParam(required = false) String segundoApellido) {
+        List<UserDto> listUser = this.userService.findByExample(nombre, primerApellido, segundoApellido);
+        return new ResponseEntity<>(listUser, HttpStatus.OK);
+    }
+
     @PostMapping
     public ResponseEntity<UserDto> save(@RequestBody UserDto userDto) {
+        userDto.setId(null);
         UserDto userReultDto = this.userService.save(userDto);
         return new ResponseEntity<>(userReultDto, HttpStatus.CREATED);
     }
