@@ -7,10 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProductDto {
+public class ProductViewDto {
     private String codigo;
     private String nombre;
-    private String descripcion;
-    private Integer estatus;
-    private EstatusDto estatus2;
+    private String estatus;
 }

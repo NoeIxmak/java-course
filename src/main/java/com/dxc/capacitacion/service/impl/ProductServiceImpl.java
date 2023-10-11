@@ -6,6 +6,7 @@ import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import com.dxc.capacitacion.dto.ProductDto;
+import com.dxc.capacitacion.dto.ProductViewDto;
 import com.dxc.capacitacion.mapper.ProductMapper;
 import com.dxc.capacitacion.model.Product;
 import com.dxc.capacitacion.repository.ProductRepository;
@@ -26,6 +27,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public List<ProductViewDto> findAllView() {
+        return ProductMapper.INSTANCE.toViewDto(this.productRepository.findAll());
+    }
+
+    @Override
     public ProductDto findByCodigo(String codigo) {
         Product product = productRepository.findByCodigo1(codigo);
 
@@ -34,7 +40,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<ProductDto> findByExample(String codigo, String nombre, String descripcion, Integer estatus) {
-        Product product = new Product(codigo, nombre, descripcion, estatus);
+        Product product = new Product(codigo, nombre, descripcion, estatus, null);
         List<Product> productList = productRepository.findAll(Example.of(product));
         return ProductMapper.INSTANCE.toDto(productList);
     }

@@ -6,17 +6,17 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.dxc.capacitacion.model.User;
+import com.dxc.capacitacion.model.Product;
 
 @SpringBootTest
-class UserRepositoryTest {
+class ProductRepositoryTest {
 
     @Autowired
-    UserRepository userRepository;
+    ProductRepository productRepository;
 
     @Test
-    void testFindByName1() {
-        User user = userRepository.findByName2("Alejandra");
-        assertNotNull(user);
+    void testFindByCodigo1() {
+        Product product = productRepository.findByCodigo1("A11");
+        assertNotNull(product);
     }
 }

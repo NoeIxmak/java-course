@@ -32,7 +32,6 @@ public class ProductCtrl {
         return new ResponseEntity<>(listProduct, HttpStatus.OK);
     }
     
-
     @GetMapping("code")
     public ResponseEntity<ProductDto> getByCodigo(@RequestParam(required = false) String codigo) {
     return new ResponseEntity<>(this.productService.findByCodigo(codigo),

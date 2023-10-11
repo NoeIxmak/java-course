@@ -3,6 +3,7 @@ package com.dxc.capacitacion.service;
 import java.util.List;
 
 import com.dxc.capacitacion.dto.ProductDto;
+import com.dxc.capacitacion.dto.ProductViewDto;
 
 public interface ProductService {
     List<ProductDto> findAll();
@@ -16,4 +17,6 @@ public interface ProductService {
     ProductDto update(ProductDto productDto);
 
     void delete(String codigo);
+
+    List<ProductViewDto> findAllView();
 }
